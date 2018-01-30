@@ -1,0 +1,14 @@
+{
+  "extends": ["airbnb", "plugin:jest/recommended", "prettier"],
+  "plugins": ["prettier", "jest"],
+  "parser": "babel-eslint",
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": "off"
+  }
+}
