@@ -3,6 +3,9 @@ import { ApolloProvider } from 'react-apollo';
 
 import logo from './logo.svg';
 import './App.css';
+
+import NavBar from './NavBar';
+import Home from './Home';
 import Footer from './Footer';
 
 import client from './apollo/apolloClient';
@@ -10,13 +13,14 @@ import client from './apollo/apolloClient';
 const App = () => (
   <ApolloProvider client={client}>
     <div className="App">
+      <NavBar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to my basic React</h1>
+        <h1 className="App-title">
+          React, Apollo Client local state management example
+        </h1>
       </header>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
+      <Home />
       <Footer />
     </div>
   </ApolloProvider>

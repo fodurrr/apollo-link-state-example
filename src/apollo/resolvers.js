@@ -1,12 +1,12 @@
-import getAuthStatusQuery from './getAuthStatus';
+import GET_AUTH_STATUS from './getAuthStatus';
 
 export default {
   Mutation: {
     // Resolver signiature: fieldName: (obj, args, context, info) => result;
-    updateAuthStatusMutation: (_, variables, { cache }) => {
-      const previousState = cache.readQuery({ query: getAuthStatusQuery });
+    updateAuthStatus: (_, variables, { cache }) => {
+      // const previousState = cache.readQuery({ query: getAuthStatusQuery });
 
-      console.log(`previousState: ${previousState}`);
+      // console.log(`previousState: ${previousState}`);
 
       const data = {
         authStatus: {
@@ -15,9 +15,11 @@ export default {
         },
       };
 
-      cache.writeQuery({ query: getAuthStatusQuery, data });
+      cache.writeQuery({ query: GET_AUTH_STATUS, data });
 
-      console.log(`isAuthenticatedd: ${variables.isAuthenticated}`);
+      console.log(
+        `isAuthenticated after mutation: ${variables.isAuthenticated}`
+      );
 
       return {
         __typename: 'AuthStatus',
