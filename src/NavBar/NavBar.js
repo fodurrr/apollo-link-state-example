@@ -14,7 +14,6 @@ class NavBar extends Component {
     event.preventDefault();
     const { getAuthStatus: { authStatus }, updateAuthStatus } = this.props;
     if (!authStatus.isAuthenticated) {
-      console.log('Signed In.');
       updateAuthStatus({ variables: { isAuthenticated: true } });
     }
   };
@@ -23,7 +22,6 @@ class NavBar extends Component {
     event.preventDefault();
     const { getAuthStatus: { authStatus }, updateAuthStatus } = this.props;
     if (authStatus.isAuthenticated) {
-      console.log('Signed Out.');
       updateAuthStatus({ variables: { isAuthenticated: false } });
     }
   };

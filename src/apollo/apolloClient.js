@@ -3,6 +3,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import { withClientState } from 'apollo-link-state';
 import { HttpLink } from 'apollo-link-http';
+import { persistCache } from 'apollo-cache-persist';
 
 // Import default states for apollo-link-state
 import defaults from './defaults';
@@ -12,10 +13,17 @@ import resolvers from './resolvers';
 // Local in memory cache for Apollo
 const cache = new InMemoryCache();
 
-const stateLink = withClientState({
+persistCache({
   cache,
-  defaults, // default local states
+  storage: window.localStorage,
+});
+
+// console.log(`Defaults: ${JSON.stringify(defaults, null, 2)}`);
+
+const stateLink = withClientState({
   resolvers, // local resolvers
+  defaults, // default local states
+  cache,
 });
 
 export default new ApolloClient({
